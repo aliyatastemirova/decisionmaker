@@ -1,0 +1,49 @@
+{% extends 'questions/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center py-3">
+            <h1 class="display-4">Decision making tool</h1>
+        </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-12 text-center py-3">
+                <h5><i class="fas fa-question-circle"></i> Add your question:</h5>
+            </div>
+            <div class="col-6 text-center">
+                <div class="input-group mb-3">
+                    {{ form.question }}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 text-center py-3">
+                <h5><i class="fas fa-plus-circle"></i> Add your options:</h5>
+            </div>
+            {{ formset.management_form }}
+            {% for form in formset %}
+            <div class="col-6 text-center">
+                <div class="input-group mb-3">
+                    {{ form.answer }}
+                </div>
+            </div>
+            <div class="col-12"></div>
+            {% endfor %}
+            <div class="col-12 text-center py-3">
+                <button id="add_more" type="button" class="btn btn-outline-success">Add an option</button>
+                <button id="delete" type="button" class="btn btn-outline-danger">Delete last option</button>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col text-center py-3">
+                <button type="submit" class="btn btn-outline-success">Make a decision for me</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

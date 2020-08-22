@@ -1,0 +1,41 @@
+{% extends 'questions/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center py-3">
+            <h1 class="display-4">Decision making tool</h1>
+            <h2 class="display-5 py-3">Result</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h5><i class="fas fa-question-circle"></i> Your question:</h5>
+        </div>
+        <div class="col-6 text-center py-3">
+            <div class="mb-3">
+                <h3>
+                    {{ context.question }}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 text-center py-3">
+            <h5><i class="fas fa-plus-circle"></i> The chosen answer:</h5>
+        </div>
+        <div class="col-6 text-center">
+            <div class="mb-3">
+                <h3>
+                    {{ context.answer }}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+            <div class="col text-center py-3">
+                <a type="button" class="btn btn-outline-success" href="/">Ask something else</a>
+            </div>
+        </div>
+</div>
+{% endblock %}

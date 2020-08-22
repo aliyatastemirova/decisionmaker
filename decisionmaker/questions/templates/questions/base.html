@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>Decision Maker 1.0</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Decision Maker">
+    <link rel="icon" type="image/png" id="favicon" href="{% static '/images/favicon.png' %}"/>
+    <!-- bootstrap css -->
+    <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- bootstrap js -->
+</head>
+
+<body>
+{% block content %}
+
+{% endblock %}
+</body>
+
+<footer>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  crossorigin="anonymous"></script>
+<script src="{% static '/js/bootstrap.min.js' %}"></script>
+<!-- scripts necessary for the dynamic form (adding and deleting options) -->
+<script src="{% static '/js/custom.js' %}"></script>
+<script>
+    $('#add_more').click(function() {
+        cloneMore('.input-group:last', 'form');
+    });
+</script>
+<script>
+    $('#delete').click(function() {
+        deleteForm('.input-group:last', 'form');
+    });
+</script>
+</html>
