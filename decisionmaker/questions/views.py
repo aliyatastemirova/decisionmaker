@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views import View
 from django.contrib import messages
-from formtools.wizard.views import SessionWizardView, WizardView
 from django.http import HttpResponseRedirect
 from .forms import Question, Answers
 from django.forms.formsets import formset_factory
+import random
 
 
 # Create your views here.
@@ -24,6 +24,7 @@ class HomeView(View):
     QuestionsFormSet = formset_factory(Answers, extra=2)
 
     def get(self, request, *args, **kwargs):
+        request.session.flush()
         form = self.form()
         formset = self.QuestionsFormSet()
         return render(request, self.template_name, {'form': form, "formset": formset})
@@ -36,7 +37,6 @@ class HomeView(View):
             form = form.cleaned_data
             request.session["answers"] = answer_list
             request.session["question"] = form["question"]
-            print(request.session["answers"])
         else:
             form = self.form()
             formset = self.QuestionsFormSet()
@@ -47,4 +47,14 @@ class ResultView(View):
     template_name = "questions/result.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        if "answers" not in request.session.keys():
+            return HttpResponseRedirect('/')
+        else:
+            answers = request.session["answers"]
+            question = request.session["question"]
+            chosen_answer = random.choice(answers)
+            context = {
+                "answer": chosen_answer,
+                "question": question
+            }
+            return render(request, self.template_name, {"context": context})

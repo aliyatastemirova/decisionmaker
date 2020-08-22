@@ -24,6 +24,6 @@ function deleteForm(selector, type) {
         $('#id_' + type + '-TOTAL_FORMS').val(total);
     }
     else {
-        alert('Minimum two answers are required');
+        alert('Minimum two options are required');
     }
 }
