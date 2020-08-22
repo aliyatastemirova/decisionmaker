@@ -8,6 +8,7 @@
 
 - Python 3.8.*
 - Pip
+- Django 3.0.*
 - All the required libraries installed (Installation described below)
 
 ### Environment setup
