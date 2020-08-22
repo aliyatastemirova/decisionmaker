@@ -25,5 +25,19 @@
 
 <footer>
 </footer>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  crossorigin="anonymous"></script>
 <script src="{% static '/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/custom.js' %}"></script>
+<script>
+    $('#add_more').click(function() {
+        cloneMore('.input-group:last', 'form');
+    });
+</script>
+<script>
+    $('#delete').click(function() {
+        deleteForm('.input-group:last', 'form');
+    });
+</script>
 </html>
