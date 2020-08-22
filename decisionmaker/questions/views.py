@@ -46,7 +46,7 @@ class ResultView(View):
     template_name = "questions/result.html"
 
     def get(self, request, *args, **kwargs):
-        if "answers" not in request.session.keys():  # in case someone tries to open /result directly
+        if "answers" not in request.session.keys() and "question" not in request.session.keys():  # in case someone tries to open /result directly
             return HttpResponseRedirect('/')
         else:
             answers = request.session["answers"]  # retrieve data from the session

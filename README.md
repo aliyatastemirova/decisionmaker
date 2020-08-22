@@ -37,7 +37,7 @@ Design/files:
 - templates extend base template (scripts, main design)
 
 Technical details:
-- This is a model-free app, all data is stored in sessions
+- This is a model-free app, all data is stored in sessions and model tests are not needed
 - There are only two views: main (homepage) and result
 - There are two forms specified in forms.py: question and answers
 - .gitattributes file is there to make sure github marks this repo as python
